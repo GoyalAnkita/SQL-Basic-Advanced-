@@ -1,0 +1,5 @@
+1) Find second highest salaries.
+   a) Made use of subquery: select MAX(Salary) AS SecondHighestSalary from Employee where Salary < (select max(Salary) from Employee)
+   Runtime of the query was 234ms which was faster than 41.34% of MySQL submissions.
+
+2)
