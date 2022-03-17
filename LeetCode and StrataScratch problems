@@ -2,4 +2,32 @@
    a) Made use of subquery: select MAX(Salary) AS SecondHighestSalary from Employee where Salary < (select max(Salary) from Employee)
    Runtime of the query was 234ms which was faster than 41.34% of MySQL submissions.
 
-2)
+2) Employee Bonus.
+   +-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| empId       | int     |
+| name        | varchar |
+| supervisor  | int     |
+| salary      | int     |
++-------------+---------+
+
+Table: Bonus
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| empId       | int  |
+| bonus       | int  |
++-------------+------+
+
+Q) Find employees having bonus less than 1000
+
+   Used left join for the query so that we can get the value for NULL as well.
+   select e.name,b.bonus from Employee as e
+left join Bonus as b
+on e.empId=b.empId
+where b.bonus<1000
+or b.bonus is NULL
+
+
