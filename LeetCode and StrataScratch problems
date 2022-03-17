@@ -1,6 +1,15 @@
 1) Find second highest salaries.
    a) Made use of subquery: select MAX(Salary) AS SecondHighestSalary from Employee where Salary < (select max(Salary) from Employee)
    Runtime of the query was 234ms which was faster than 41.34% of MySQL submissions.
+   
+     b) Made use of Analytics function: select salary as secondhighestsalary
+from (
+    select id,salary,
+    row_number() over (order by salary desc) as rn from Employee e
+    
+)b
+where rn = 2
+
 
 2) Employee Bonus.
    +-------------+---------+
